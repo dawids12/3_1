@@ -10,6 +10,7 @@ class Main {
       int wiek;
       String imie;
       System.out.println("1 - Dodanie studenta");
+      System.out.println("2 - Wypisanie aktualnej listy studentów");
       System.out.println("0 - Wyjście z programu");
       while(opcja != 0){
         System.out.println("Podaj opcje:");
@@ -24,12 +25,14 @@ class Main {
             scan.nextLine();
             s.addStudent(new Student(imie, wiek));
             break;
+          case 2:
+            var students = s.getStudents();
+            for(Student current : students) {
+            System.out.println(current.ToString());
+              }
         }
         }
-      var students = s.getStudents();
-      for(Student current : students) {
-        System.out.println(current.ToString());
-      }
+
     } catch (IOException e) {
 
     }
