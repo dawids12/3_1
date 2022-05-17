@@ -11,6 +11,7 @@ class Main {
       String imie,data_urodz;
       System.out.println("1 - Dodanie studenta");
       System.out.println("2 - Wypisanie aktualnej listy studentów");
+      System.out.println("3 - Wyszukiwanie studenta po imieniu");
       System.out.println("0 - Wyjście z programu");
       while(opcja != 0){
         System.out.println("Podaj opcje:");
@@ -32,6 +33,12 @@ class Main {
             for(Student current : students) {
             System.out.println(current.ToString());
               }
+            case 3:
+            System.out.println("Podaj szukane imie:");
+            String szukane_imie = scan.nextLine();
+if(s.findStudentByName(szukane_imie)==null) System.out.println("Nie znaleziono!");
+            else System.out.println(s.findStudentByName(szukane_imie).ToString());
+            break;
         }
         }
 
