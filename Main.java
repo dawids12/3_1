@@ -8,7 +8,7 @@ class Main {
       Scanner scan = new Scanner(System.in);
       int opcja = 10;
       int wiek;
-      String imie,data_urodz;
+      String imie,data_urodz,nazwisko;
       System.out.println("1 - Dodanie studenta");
       System.out.println("2 - Wypisanie aktualnej listy studentów");
       System.out.println("3 - Wyszukiwanie studenta po imieniu");
@@ -21,18 +21,21 @@ class Main {
           case 1:
             System.out.println("Podaj imie: ");
             imie = scan.nextLine();
+            System.out.println("Podaj nazwisko: ");
+            nazwisko = scan.nextLine();
             System.out.println("Podaj wiek: ");
             wiek = scan.nextInt();
             scan.nextLine();
             System.out.println("Podaj date urodzenia: ");
             data_urodz = scan.nextLine();
-            s.addStudent(new Student(imie, wiek,data_urodz));
+            s.addStudent(new Student(imie, wiek,data_urodz,nazwisko));
             break;
           case 2:
             var students = s.getStudents();
             for(Student current : students) {
             System.out.println(current.ToString());
               }
+            break;
             case 3:
             System.out.println("Podaj szukane imie:");
             String szukane_imie = scan.nextLine();
