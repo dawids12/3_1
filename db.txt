@@ -1,2 +1,2 @@
-Dawid 22
-Kamil 33
+Dawid 22 22.9.2000
+Kamil 25 10.12.2001
