@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 class WrongStudentName extends Exception {}
+class WrongAge extends Exception {}
 
 class Main {
 
@@ -12,6 +13,15 @@ class Main {
     String imie = scan.nextLine();
     if(imie.contains(" ")) throw new WrongStudentName();
     return imie;
+  }
+
+  
+    public static int ReadAge() throws WrongAge{
+    System.out.println("Podaj wiek:");
+    int wiek = scan.nextInt();
+    scan.nextLine();
+    if(wiek < 0 || wiek > 100) throw new WrongAge();
+    return wiek;
   }
 
   
@@ -38,7 +48,7 @@ class Main {
             System.out.println("Podaj nazwisko: ");
             nazwisko = scan.nextLine();
             //System.out.println("Podaj wiek: ");
-            wiek = scan.nextInt();
+            wiek = ReadAge();
             scan.nextLine();
             System.out.println("Podaj date urodzenia: ");
             data_urodz = scan.nextLine();
@@ -57,10 +67,11 @@ if(s.findStudentByName(szukane_imie)==null) System.out.println("Nie znaleziono!"
             else System.out.println(s.findStudentByName(szukane_imie).ToString());
             break;
         }
-        }
-       catch (WrongStudentName e){
+        } catch (WrongAge e){
+        System.out.println("Błędny wiek!");
+        } catch (WrongStudentName e){
         System.out.println("Błędne imie!");        
-    } catch (IOException e) {
+        } catch (IOException e) {
 
     }
         }
