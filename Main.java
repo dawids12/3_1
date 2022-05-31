@@ -1,8 +1,12 @@
 import java.io.IOException;
 import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 class WrongStudentName extends Exception {}
 class WrongAge extends Exception {}
+class WrongDateOfBirth extends Exception {}
 
 class Main {
 
@@ -22,6 +26,18 @@ class Main {
     scan.nextLine();
     if(wiek < 0 || wiek > 100) throw new WrongAge();
     return wiek;
+  }
+
+  public static String ReadDateOfBirth() throws WrongDateOfBirth {
+    System.out.println("Podaj datę urodzenia w formie:  DD-MM-YYY");
+    String date = scan.nextLine();
+    try {
+    DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+    format.parse(date);
+    return date;
+    } catch(ParseException e){
+    throw new WrongDateOfBirth();
+    }
   }
 
   
@@ -50,8 +66,8 @@ class Main {
             //System.out.println("Podaj wiek: ");
             wiek = ReadAge();
             scan.nextLine();
-            System.out.println("Podaj date urodzenia: ");
-            data_urodz = scan.nextLine();
+           // System.out.println("Podaj date urodzenia: ");
+            data_urodz = ReadDateOfBirth();
             s.addStudent(new Student(imie, wiek,data_urodz,nazwisko));
             break;
           case 2:
@@ -67,6 +83,8 @@ if(s.findStudentByName(szukane_imie)==null) System.out.println("Nie znaleziono!"
             else System.out.println(s.findStudentByName(szukane_imie).ToString());
             break;
         }
+        } catch (WrongDateOfBirth e){
+          System.out.println("Błędny format danych!");
         } catch (WrongAge e){
         System.out.println("Błędny wiek!");
         } catch (WrongStudentName e){
