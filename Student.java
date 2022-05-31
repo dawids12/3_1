@@ -18,7 +18,7 @@ public class Student {
   public String GetNazwisko() {return Nazwisko;}
 
   public String ToString() {
-    return Name + " " + Nazwisko + " "+ Integer.toString(Age) + " " + Birth ;
+    return Name + " " + Integer.toString(Age) + " " + Birth + " " + Nazwisko  ;
   }
 
   public static Student Parse(String str) {
